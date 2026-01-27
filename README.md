@@ -113,6 +113,34 @@ python3 dynamic_js_scraper.py -i targets.txt --proxy http://127.0.0.1:8080
 python3 dynamic_js_scraper.py -i targets.txt --cookie "session=abc; token=xyz"
 ```
 
+### Installing as a global command (optional)
+
+If you want to run the tool from anywhere after cloning the repository, you can make it available globally.
+
+1. Make the script executable:
+
+```bash
+chmod +x dynamic_js_scraper.py
+```
+
+2. Move it into a directory in your PATH (for example `/usr/local/bin`):
+
+```bash
+sudo mv dynamic_js_scraper.py /usr/local/bin/dynamic_js
+```
+
+3. Run it from anywhere:
+
+```bash
+dynamic_js
+```
+
+Alternatively, you can create a symlink instead of moving the file:
+
+```bash
+sudo ln -s "$(pwd)/dynamic_js_scraper.py" /usr/local/bin/dynamic_js
+```
+
 ---
 
 ## Notes & limitations
@@ -125,7 +153,3 @@ python3 dynamic_js_scraper.py -i targets.txt --cookie "session=abc; token=xyz"
 Further analysis (endpoints, secrets, access control issues) is intentionally left to the user.
 
 ---
-
-## License
-
-MIT
