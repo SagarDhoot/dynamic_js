@@ -141,6 +141,21 @@ Alternatively, you can create a symlink instead of moving the file:
 sudo ln -s "$(pwd)/dynamic_js_scraper.py" /usr/local/bin/dynamic_js
 ```
 
+## Using a virtual environment (optional)
+
+If you run into Python dependency or environment issues, it is recommended to use a virtual environment.
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python3 -m playwright install chromium
+```
+To exit the virtual environment:
+```deactivate```
+
+Using a virtual environment helps avoid conflicts with system-wide Python packages.
+
 ---
 
 ## Notes & limitations
