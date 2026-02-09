@@ -186,13 +186,21 @@ async def scrape_domain(semaphore, playwright, domain, args):
 
         # Try visiting https:// then http://
         reachable = False
-        for proto in ("https://", "http://"):
-            try:
-                await page.goto(proto + domain, timeout=args.timeout_ms)
-                reachable = True
-                break
-            except:
-                pass
+
+		parsed = urlparse(domain)
+		if parsed.scheme:
+		    urls_to_try = [domain]
+		else:
+		    urls_to_try = [f"https://{domain}", f"http://{domain}"]
+
+		for url in urls_to_try:
+		    try:
+		        await page.goto(url, timeout=args.timeout_ms)
+		        reachable = True
+		        break
+		    except:
+		        pass
+
 
         if not reachable:
             print(f"[!] Could not load {domain}")
